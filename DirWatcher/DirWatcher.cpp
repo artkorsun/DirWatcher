@@ -7,6 +7,7 @@
 #include <windows.h>
 #include <tchar.h>
 
+#include <filesystem>
 #include <iostream>
 #include <optional>
 #include <thread>
@@ -17,7 +18,7 @@ void _tmain(int argc, TCHAR* argv[])
 {/*
     if (argc != 2)
     {
-        _tprintf(TEXT("Usage: %s <dir>\n"), argv[0]);
+        _tprintf(TEXT("Usage: %s <source dir> <target dir>\n"), argv[0]);
         return;
     }
     */
@@ -29,7 +30,18 @@ void _tmain(int argc, TCHAR* argv[])
 
 void run(const std::wstring& source, const std::wstring& target) {
     
-    std::wcout << L"Welcome to DirMimicker!\n";
+    std::wcout << L"Welcome to DirWatcher!\n";
+    
+    if (!std::filesystem::is_directory(source)) {
+        std::wcout << source << L" is not a directory, quit" << "\n";
+        return;
+    }
+
+    if (!std::filesystem::is_directory(target)) {
+        std::wcout << target << L" is not a directory, quit" << "\n";
+        return;
+    }
+
     std::wcout << L"Source directory: " << source << "\n";
     std::wcout << L"Target directory: " << target << "\n";
 
