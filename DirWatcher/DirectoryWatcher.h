@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ActionQueue.h"
+#include "Logger.h"
 
 #include <deque>
 #include <string>
@@ -15,13 +16,15 @@ public:
 	DirectoryWatcher(const std::wstring& source, 
 					 const std::wstring& target,
 					 ActionQueue& action_queue,
-					 const std::atomic<bool>& stop);
+					 const std::atomic<bool>& stop,
+					 Logger& logger);
 
-	void run(HANDLE& watch_event);
+	bool run(HANDLE io_completion_port);
 
 private:
 	std::wstring _source;
 	std::wstring _target;
 	ActionQueue& _action_queue;
 	const std::atomic<bool>& _stop;
+	Logger& _logger;
 };

@@ -1,5 +1,5 @@
 ﻿cmake_minimum_required (VERSION 3.8)
 
-project ("FolderCloner")
+project ("DirWatcher")
 
-add_subdirectory ("FolderCloner")
+add_subdirectory ("DirWatcher")
