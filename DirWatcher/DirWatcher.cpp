@@ -15,17 +15,18 @@
 void run(const std::wstring&, const std::wstring&);
 
 void _tmain(int argc, TCHAR* argv[])
-{/*
+{
     if (argc != 2)
     {
         _tprintf(TEXT("Usage: %s <source dir> <target dir>\n"), argv[0]);
         return;
     }
-    */
-    std::wstring hot_dir = L"C:\\test1"; // = argv[1];
-    std::wstring clone_dir = L"C:\\test2"; // = argv[2];
 
-    run(hot_dir, clone_dir);
+    std::string source_dir = argv[1];
+    std::string target_dir = argv[2];
+
+    run(std::wstring{std::begin(source_dir), std::end(source_dir)},
+        std::wstring{std::begin(target_dir), std::end(target_dir)});
 }
 
 void run(const std::wstring& source, const std::wstring& target) {
