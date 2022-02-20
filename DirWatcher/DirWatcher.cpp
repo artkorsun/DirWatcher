@@ -16,7 +16,7 @@ void run(const std::wstring&, const std::wstring&);
 
 void _tmain(int argc, TCHAR* argv[])
 {
-    if (argc != 2)
+    if (argc != 3)
     {
         _tprintf(TEXT("Usage: %s <source dir> <target dir>\n"), argv[0]);
         return;
